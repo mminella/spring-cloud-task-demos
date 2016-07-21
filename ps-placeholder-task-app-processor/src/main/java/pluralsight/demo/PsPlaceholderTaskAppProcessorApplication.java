@@ -2,9 +2,11 @@ package pluralsight.demo;
 
 import javax.management.MBeanServer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.integration.monitor.IntegrationMBeanExporter;
@@ -17,12 +19,15 @@ public class PsPlaceholderTaskAppProcessorApplication {
 
 	public static void main(String[] args) {
 		
-		SpringApplication.run(PsPlaceholderTaskAppProcessorApplication.class, args);
+		ApplicationContext context = SpringApplication.run(PsPlaceholderTaskAppProcessorApplication.class, args);
 		
 		System.out.print("main called ...");
 		
-		TaskProcessor p = new TaskProcessor();
+		TaskProcessor p = context.getBean(TaskProcessor.class);
 		p.setupRequest();
+		
+		//TaskProcessor p = new TaskProcessor();
+		//p.setupRequest();
 	}
 	
 	

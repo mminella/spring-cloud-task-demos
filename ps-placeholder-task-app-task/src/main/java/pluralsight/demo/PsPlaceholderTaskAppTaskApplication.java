@@ -24,7 +24,7 @@ public class PsPlaceholderTaskAppTaskApplication {
 		
 		@Override
 		public void run(String...strings) throws Exception {
-			System.out.println("logging task called");
+			System.out.println("logging task called, sucka!");
 		}
 	}
 }
